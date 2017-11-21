@@ -21,6 +21,7 @@ abstract class BaseCounterTextView extends AppCompatTextView {
 
     private static final int DEFAULT_SPEED = 25;
     public static final int STEP_10 = 10;
+    private final NumberFormat numberFormat = NumberFormat.getInstance();
     private long mTarget = 0;
     private long mCurrent = 0;
     private boolean mNumberFormat = true;
@@ -132,7 +133,7 @@ abstract class BaseCounterTextView extends AppCompatTextView {
 
     private void display(long current) {
         if (mNumberFormat) {
-            setText(NumberFormat.getInstance().format(current));
+            setText(numberFormat.format(current));
         } else {
             setText(String.valueOf(current));
         }
