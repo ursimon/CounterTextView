@@ -21,10 +21,10 @@ abstract class BaseCounterTextView extends AppCompatTextView {
 
     private static final int DEFAULT_SPEED = 25;
     public static final int STEP_10 = 10;
-    private final NumberFormat numberFormat = NumberFormat.getInstance();
     private long mTarget = 0;
     private long mCurrent = 0;
-    private boolean mNumberFormat = true;
+    private final NumberFormat mNumberFormat = NumberFormat.getInstance();
+    private boolean mNumberFormatEnabled = true;
     private int mSpeed;
 
     BaseCounterTextView(Context context) {
@@ -47,7 +47,7 @@ abstract class BaseCounterTextView extends AppCompatTextView {
         if (attrs != null) {
             int[] set = {R.attr.numberFormat, R.attr.speed};
             TypedArray attributes = getContext().obtainStyledAttributes(attrs, set);
-            mNumberFormat = attributes.getBoolean(0, true);
+            mNumberFormatEnabled = attributes.getBoolean(0, true);
             mSpeed = attributes.getInt(1, DEFAULT_SPEED);
             attributes.recycle();
         }
@@ -132,8 +132,8 @@ abstract class BaseCounterTextView extends AppCompatTextView {
     }
 
     private void display(long current) {
-        if (mNumberFormat) {
-            setText(numberFormat.format(current));
+        if (mNumberFormatEnabled) {
+            setText(mNumberFormat.format(current));
         } else {
             setText(String.valueOf(current));
         }

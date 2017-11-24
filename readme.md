@@ -42,8 +42,8 @@ RxJava1 based:
 
 ```
 dependencies {
-        implementation 'com.github.ursimon.CounterTextView:library-rxjava1:1.0.0'
-        implementation 'com.github.ursimon.CounterTextView:library-common:1.0.0'
+        implementation 'com.github.ursimon.CounterTextView:library-rxjava1:1.0.1'
+        implementation 'com.github.ursimon.CounterTextView:library-common:1.0.1'
 }
 ```
 
@@ -51,8 +51,8 @@ RxJava2 based:
 
 ```
 dependencies {
-        implementation 'com.github.ursimon.CounterTextView:library-rxjava2:1.0.0'
-        implementation 'com.github.ursimon.CounterTextView:library-common:1.0.0'
+        implementation 'com.github.ursimon.CounterTextView:library-rxjava2:1.0.1'
+        implementation 'com.github.ursimon.CounterTextView:library-common:1.0.1'
 }
 ```
 
@@ -72,7 +72,7 @@ It can take up two optional xml parameters:
 
 param        | value      | description
 ------------ | ---------- | -----------
-numberFormat | true/false | whether you to be number formatted by default `NumberFormat.getInstance().format` 
+numberFormat | true/false | whether you want to be number formatted by default `NumberFormat.getInstance().format` 
 speed        | int        | speed of Observable.interval ticking to animate towards target, default **25** milliseconds
 
 #### From code
