@@ -1,0 +1,8 @@
+project.ext {
+    compileSdk = 33
+    buildTools = "33.0.1"
+    targetSdk = 33
+    minSdk = 19
+    versionCode = 2
+    versionName = "2.0"
+}
