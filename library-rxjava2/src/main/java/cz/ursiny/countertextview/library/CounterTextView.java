@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 
 import java.util.concurrent.TimeUnit;
 
+import cz.ursiny.countertextview.library.common.BaseCounterTextView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -34,14 +35,14 @@ public class CounterTextView extends BaseCounterTextView {
     }
 
     @Override
-    void unsubscribe() {
+    protected void unsubscribe() {
         if ((mDisposable != null) && (!mDisposable.isDisposed())) {
             mDisposable.dispose();
         }
     }
 
     @Override
-    void subscribeIfNeeded() {
+    protected void subscribeIfNeeded() {
         if (mDisposable == null || mDisposable.isDisposed()) {
             mDisposable = Observable.interval(getSpeed(), TimeUnit.MILLISECONDS)
                     .observeOn(AndroidSchedulers.mainThread())
@@ -51,12 +52,7 @@ public class CounterTextView extends BaseCounterTextView {
 
     public Consumer<Long> targetConsumer() {
         if (mConsumer == null) {
-            mConsumer = new Consumer<Long>() {
-                @Override
-                public void accept(Long target) throws Exception {
-                    setTarget(target);
-                }
-            };
+            mConsumer = this::setTarget;
         }
         return mConsumer;
     }

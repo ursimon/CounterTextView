@@ -1,23 +1,21 @@
-package cz.ursiny.countertextview.library;
+package cz.ursiny.countertextview.library.common;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 import java.text.NumberFormat;
-
-import cz.ursiny.countertextview.R;
 
 /**
  * Animated CounterTextView
  * Created by Michal Ursiny on 28.03.2017.
  */
 
-abstract class BaseCounterTextView extends AppCompatTextView {
+public abstract class BaseCounterTextView extends AppCompatTextView {
 
     private static final int DEFAULT_SPEED = 25;
     public static final int STEP_10 = 10;
@@ -27,17 +25,17 @@ abstract class BaseCounterTextView extends AppCompatTextView {
     private boolean mNumberFormatEnabled = true;
     private int mSpeed;
 
-    BaseCounterTextView(Context context) {
+    protected BaseCounterTextView(Context context) {
         super(context);
         initView(null);
     }
 
-    BaseCounterTextView(Context context, AttributeSet attrs) {
+    protected BaseCounterTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(attrs);
     }
 
-    BaseCounterTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    protected BaseCounterTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(attrs);
     }
@@ -68,7 +66,7 @@ abstract class BaseCounterTextView extends AppCompatTextView {
         unsubscribe();
     }
 
-    abstract void unsubscribe();
+    protected abstract void unsubscribe();
 
     @Override
     public Parcelable onSaveInstanceState() {
@@ -85,7 +83,7 @@ abstract class BaseCounterTextView extends AppCompatTextView {
         subscribeIfNeeded();
     }
 
-    abstract void subscribeIfNeeded();
+    protected abstract void subscribeIfNeeded();
 
     protected void tick() {
         if (mCurrent != mTarget) {

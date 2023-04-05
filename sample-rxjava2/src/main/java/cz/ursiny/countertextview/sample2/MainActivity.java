@@ -1,42 +1,36 @@
 package cz.ursiny.countertextview.sample2;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.SeekBar;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.view.View;
 
 import com.jakewharton.rxbinding2.widget.RxSeekBar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import cz.ursiny.countertextview.R;
-import cz.ursiny.countertextview.library.CounterTextView;
+import cz.ursiny.countertextview.databinding.ActivityMainBinding;
 import io.reactivex.disposables.Disposable;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.counter)
-    CounterTextView mCounter;
-    @BindView(R.id.seekBar)
-    SeekBar mSeekBar;
-    @BindView(R.id.target)
-    TextView mTarget;
     private Disposable mDisposable;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mDisposable = RxSeekBar.userChanges(mSeekBar)
+        mDisposable = RxSeekBar.userChanges(binding.seekBar)
                 .map(Long::valueOf)
-                .doOnNext(aLong -> mTarget.setText(String.valueOf(aLong)))
-                .subscribe(mCounter.targetConsumer());
+                .doOnNext(aLong -> binding.target.setText(String.valueOf(aLong)))
+                .subscribe(binding.counter.targetConsumer());
     }
 
     @Override

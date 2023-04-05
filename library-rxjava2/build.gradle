@@ -2,12 +2,6 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion project.compileSdk
-    defaultConfig {
-        minSdkVersion project.minSdk
-        targetSdkVersion project.targetSdk
-        versionCode project.versionCode
-        versionName project.versionName
-    }
     buildToolsVersion project.buildTools
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -16,7 +10,7 @@ android {
 }
 
 dependencies {
-    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    api 'io.reactivex.rxjava2:rxjava:2.1.8'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api 'io.reactivex.rxjava2:rxjava:2.2.21'
     api project(':library-common')
 }

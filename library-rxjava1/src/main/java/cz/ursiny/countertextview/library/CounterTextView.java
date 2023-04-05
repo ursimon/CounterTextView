@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 
 import java.util.concurrent.TimeUnit;
 
-import cz.ursiny.countertextview.library.BaseCounterTextView;
+import cz.ursiny.countertextview.library.common.BaseCounterTextView;
 import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -34,35 +34,25 @@ public class CounterTextView extends BaseCounterTextView {
     }
 
     @Override
-    void unsubscribe() {
+    protected void unsubscribe() {
         if ((mSubscription != null) && (!mSubscription.isUnsubscribed())) {
             mSubscription.unsubscribe();
         }
     }
 
     @Override
-    void subscribeIfNeeded() {
+    protected void subscribeIfNeeded() {
         if (mSubscription == null || mSubscription.isUnsubscribed()) {
             mSubscription = Observable.interval(getSpeed(), TimeUnit.MILLISECONDS)
                     .onBackpressureDrop()
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Action1<Long>() {
-                        @Override
-                        public void call(Long aLong) {
-                            tick();
-                        }
-                    });
+                    .subscribe(aLong -> tick());
         }
     }
 
     public Action1<Long> targetAction() {
         if (mAction == null) {
-            mAction = new Action1<Long>() {
-                @Override
-                public void call(Long target) {
-                    setTarget(target);
-                }
-            };
+            mAction = this::setTarget;
         }
         return mAction;
     }
