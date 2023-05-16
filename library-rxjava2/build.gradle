@@ -1,22 +1,17 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-    defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-    }
-    buildToolsVersion '27.0.2'
+    compileSdkVersion project.compileSdk
+    buildToolsVersion project.buildTools
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'cz.ursiny.countertextview.library'
 }
 
 dependencies {
-    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    api 'io.reactivex.rxjava2:rxjava:2.1.8'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api 'io.reactivex.rxjava2:rxjava:2.2.21'
     api project(':library-common')
 }

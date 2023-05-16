@@ -1,17 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-
-    defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-    }
-
+    compileSdkVersion project.compileSdk
+    namespace 'cz.ursiny.countertextview.library.common'
 }
 
 dependencies {
-    api 'com.android.support:appcompat-v7:27.0.2'
+    api 'androidx.appcompat:appcompat:1.6.1'
 }
