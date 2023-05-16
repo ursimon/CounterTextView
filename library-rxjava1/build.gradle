@@ -35,7 +35,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.ursiny.countertextview'
             artifactId = 'library-rxjava1'
-            version = '1.1.1'
+            version = project.libraryVersion
 
             afterEvaluate {
                 from components.release
