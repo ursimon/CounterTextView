@@ -1,10 +1,32 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
 android {
     compileSdkVersion project.compileSdk
     namespace 'cz.ursiny.countertextview.library.common'
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
     api 'androidx.appcompat:appcompat:1.6.1'
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.ursiny.countertextview'
+            artifactId = 'library-common'
+            version = '1.1.1'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
 }

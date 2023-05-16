@@ -1,4 +1,7 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
 android {
     compileSdkVersion project.compileSdk
@@ -8,10 +11,29 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     namespace 'cz.ursiny.countertextview.library'
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
     api 'io.reactivex.rxjava2:rxjava:2.2.21'
     api project(':library-common')
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.ursiny.countertextview'
+            artifactId = 'library-rxjava2'
+            version = '1.1.1'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
 }
