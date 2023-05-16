@@ -17,10 +17,11 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'cz.ursiny.countertextview'
 }
 
 dependencies {
     implementation project(':library-rxjava2')
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.jakewharton.rxbinding2:rxbinding:2.2.0'
+    implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
 }

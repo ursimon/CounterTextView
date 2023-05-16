@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
-import com.jakewharton.rxbinding2.widget.RxSeekBar;
+import com.jakewharton.rxbinding3.widget.RxSeekBar;
 
 import cz.ursiny.countertextview.databinding.ActivityMainBinding;
 import io.reactivex.disposables.Disposable;

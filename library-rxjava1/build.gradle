@@ -6,14 +6,13 @@ android {
     defaultConfig {
         minSdkVersion project.minSdk
         targetSdkVersion project.targetSdk
-        versionCode project.versionCode
-        versionName project.versionName
     }
     buildToolsVersion project.buildTools
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'cz.ursiny.countertextview.library'
 }
 
 dependencies {
