@@ -42,8 +42,8 @@ RxJava1 based:
 
 ```
 dependencies {
-        implementation 'com.github.ursimon.CounterTextView:library-rxjava1:1.1.2'
-        implementation 'com.github.ursimon.CounterTextView:library-common:1.1.2'
+        implementation 'com.github.ursimon.CounterTextView:library-rxjava1:1.1.3'
+        implementation 'com.github.ursimon.CounterTextView:library-common:1.1.3'
 }
 ```
 
@@ -51,8 +51,8 @@ RxJava2 based:
 
 ```
 dependencies {
-        implementation 'com.github.ursimon.CounterTextView:library-rxjava2:1.1.2'
-        implementation 'com.github.ursimon.CounterTextView:library-common:1.1.2'
+        implementation 'com.github.ursimon.CounterTextView:library-rxjava2:1.1.3'
+        implementation 'com.github.ursimon.CounterTextView:library-common:1.1.3'
 }
 ```
 
